@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Papelera Sabri — Papelería y Cotillón</title>
+<meta name="description" content="Papelería y cotillón para tus cumpleaños, la escuela y la oficina. Armá tu pedido online y pagá fácil.">
+<style>
+:root{
+  --pink:#FF4F8B; --pink-d:#D93270; --yellow:#FFC93C; --teal:#1FB8A6; --purple:#6C4CF1;
+  --ink:#2A2140; --muted:#6B6480; --bg:#FFF8F0; --card:#fff; --line:#F0E6DA;
+  --r:18px; --shadow:0 6px 20px rgba(42,33,64,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+img{max-width:100%}
+a{color:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:inherit;font-weight:700;padding:14px 26px;border-radius:999px;text-decoration:none;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn-pink{background:var(--pink);color:#fff}.btn-pink:hover{background:var(--pink-d)}
+.btn-yellow{background:var(--yellow);color:var(--ink)}
+.btn-ghost{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+.btn-wa{background:#25D366;color:#fff}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+/* header */
+header{position:sticky;top:0;z-index:30;background:rgba(255,248,240,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:900;font-size:1.3rem;text-decoration:none;color:var(--pink)}
+.logo span{color:var(--purple)}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{text-decoration:none;font-weight:600;font-size:.95rem}
+.cart-btn{position:relative;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:10px 18px;font:inherit;font-weight:700;cursor:pointer}
+.cart-btn b{background:var(--pink);border-radius:999px;padding:1px 8px;margin-left:6px;font-size:.85rem}
+@media(max-width:700px){.nav-links a.hide-m{display:none}}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:56px 0 72px;background:linear-gradient(135deg,#FFE3EE 0%,#FFF1C9 100%)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+.tag{display:inline-block;background:#fff;border-radius:999px;padding:6px 14px;font-weight:700;font-size:.85rem;color:var(--purple);margin-bottom:16px}
+.hero h1{font-size:clamp(2.1rem,5.5vw,3.6rem);line-height:1.08;font-weight:900;margin-bottom:16px}
+.hero h1 em{font-style:normal;color:var(--pink)}
+.hero p{font-size:1.1rem;color:var(--muted);max-width:520px;margin-bottom:26px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.hero-art{font-size:clamp(5rem,16vw,9rem);text-align:center;line-height:1.1;filter:drop-shadow(0 8px 12px rgba(0,0,0,.12))}
+.hero-art span{display:inline-block;animation:float 4s ease-in-out infinite}
+.hero-art span:nth-child(2){animation-delay:.7s}.hero-art span:nth-child(3){animation-delay:1.4s}
+@keyframes float{50%{transform:translateY(-14px) rotate(6deg)}}
+@media(max-width:800px){.hero .wrap{grid-template-columns:1fr}.hero-art{order:-1}}
+@media(prefers-reduced-motion:reduce){.hero-art span{animation:none}html{scroll-behavior:auto}}
+
+/* benefits */
+.benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:-34px;position:relative;z-index:2}
+.ben{background:var(--card);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);display:flex;gap:14px;align-items:center}
+.ben i{font-style:normal;font-size:2rem}
+.ben strong{display:block}.ben small{color:var(--muted)}
+
+/* sections */
+section{padding:64px 0}
+h2{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:900;margin-bottom:8px}
+.sub{color:var(--muted);margin-bottom:28px}
+
+/* catalog */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.chip{border:2px solid var(--line);background:#fff;border-radius:999px;padding:8px 18px;font:inherit;font-weight:700;cursor:pointer}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.prod{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.prod .pic{height:150px;display:grid;place-items:center;font-size:4.5rem}
+.prod .body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.prod h3{font-size:1.02rem}
+.prod .cat{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+.prod .price{font-size:1.25rem;font-weight:900;margin-top:auto}
+.prod .row{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:6px}
+.add{background:var(--pink);color:#fff;border:0;border-radius:999px;padding:9px 16px;font:inherit;font-weight:700;cursor:pointer}
+.add:hover{background:var(--pink-d)}
+.note{margin-top:22px;padding:14px 18px;background:#FFF1C9;border-radius:12px;font-size:.92rem}
+
+/* leads */
+.lead{background:var(--purple);color:#fff;border-radius:28px;padding:44px 28px;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.lead h2{color:#fff}.lead p{opacity:.9}
+.lead form{display:grid;gap:12px}
+input,select,textarea{width:100%;font:inherit;padding:13px 16px;border-radius:12px;border:2px solid transparent;background:#fff;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--yellow)}
+.lead small{opacity:.8;font-size:.8rem}
+.ok{background:#E6FBF3;color:#0b6b56;padding:14px;border-radius:12px;font-weight:700}
+@media(max-width:800px){.lead{grid-template-columns:1fr}}
+
+/* how */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+.step{background:#fff;border-radius:var(--r);padding:22px;box-shadow:var(--shadow)}
+.step .n{width:38px;height:38px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;font-weight:900;margin-bottom:10px}
+
+footer{background:var(--ink);color:#d9d4e6;padding:36px 0;text-align:center;font-size:.92rem}
+footer a{color:#fff;font-weight:700}
+
+/* cart drawer */
+.overlay{position:fixed;inset:0;background:rgba(20,14,34,.55);z-index:40;display:none}
+.overlay.open{display:block}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:#fff;z-index:50;transform:translateX(100%);transition:transform .25s;display:flex;flex-direction:column}
+.drawer.open{transform:none}
+.drawer header{position:static;display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:#fff}
+.drawer h3{font-size:1.2rem}
+.x{background:none;border:0;font-size:1.6rem;cursor:pointer}
+.items{flex:1;overflow:auto;padding:8px 20px}
+.item{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.item .e{font-size:2rem}
+.item small{color:var(--muted)}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);background:#fff;font-weight:900;cursor:pointer}
+.empty{text-align:center;color:var(--muted);padding:40px 0}
+.checkout{padding:16px 20px 20px;border-top:1px solid var(--line);display:grid;gap:10px;background:#FFFBF6}
+.total{display:flex;justify-content:space-between;font-size:1.2rem;font-weight:900}
+.pay{display:grid;gap:8px}
+.pay label{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:2px solid var(--line);border-radius:12px;cursor:pointer;background:#fff}
+.pay input{width:auto;margin-top:4px}
+.pay label:has(input:checked){border-color:var(--pink)}
+.pay small{display:block;color:var(--muted)}
+.transfer{background:#fff;border:2px dashed var(--teal);border-radius:12px;padding:12px;font-size:.9rem;display:none}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:12px 20px;border-radius:999px;z-index:60;font-weight:600;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+.wa-float{position:fixed;right:16px;bottom:16px;z-index:20;width:58px;height:58px;border-radius:50%;background:#25D366;display:grid;place-items:center;font-size:1.8rem;text-decoration:none;box-shadow:0 6px 16px rgba(0,0,0,.25)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">Papelera <span>Sabri</span></a>
+    <nav class="nav-links">
+      <a href="#catalogo" class="hide-m">Catálogo</a>
+      <a href="#como" class="hide-m">Cómo comprar</a>
+      <a href="#contacto" class="hide-m">Contacto</a>
+      <button class="cart-btn" id="openCart" aria-label="Abrir carrito">🛒 Carrito <b id="cartCount">0</b></button>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <span class="tag">🎉 Papelería & Cotillón</span>
+      <h1>Todo para tu <em>fiesta</em>, la escuela y la oficina</h1>
+      <p>Globos, velas, piñatas, útiles y mucho más. Armá tu pedido online, pagalo fácil y retiralo o te lo enviamos.</p>
+      <div class="cta">
+        <a href="#catalogo" class="btn btn-pink">Ver catálogo</a>
+        <a href="#contacto" class="btn btn-ghost">Pedí tu presupuesto</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true"><span>🎈</span><span>🎂</span><span>✏️</span></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="benefits">
+    <div class="ben"><i>🛍️</i><div><strong>Pedí online</strong><small>Sumá al carrito en minutos</small></div></div>
+    <div class="ben"><i>💳</i><div><strong>Pagá como quieras</strong><small>Mercado Pago o transferencia</small></div></div>
+    <div class="ben"><i>🚚</i><div><strong>Retiro o envío</strong><small>Coordinamos por WhatsApp</small></div></div>
+    <div class="ben"><i>🎁</i><div><strong>Combos para fiestas</strong><small>Precios especiales por cantidad</small></div></div>
+  </div>
+</div>
+
+<section id="catalogo">
+  <div class="wrap">
+    <h2>Nuestro catálogo</h2>
+    <p class="sub">Elegí tus productos y agregalos al carrito.</p>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+    <p class="note">📌 Los productos y precios de esta página son de ejemplo. ¿No ves lo que buscás? Escribinos, tenemos mucho más en el local.</p>
+  </div>
+</section>
+
+<section id="como" style="background:#fff">
+  <div class="wrap">
+    <h2>Comprar es muy simple</h2>
+    <p class="sub">En 4 pasos tenés tu pedido listo.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><strong>Elegí</strong><p>Recorré el catálogo y sumá lo que necesitás.</p></div>
+      <div class="step"><div class="n">2</div><strong>Revisá tu carrito</strong><p>Ajustá cantidades y completá tus datos.</p></div>
+      <div class="step"><div class="n">3</div><strong>Pagá</strong><p>Con Mercado Pago, transferencia o acordando por WhatsApp.</p></div>
+      <div class="step"><div class="n">4</div><strong>Recibí</strong><p>Retirás por el local o coordinamos el envío.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="lead">
+      <div>
+        <h2>¿Tenés una fiesta en camino? 🎊</h2>
+        <p>Dejanos tus datos y te armamos un presupuesto a medida: cumpleaños, egresos, eventos de empresa o útiles para toda la escuela. Te respondemos por WhatsApp.</p>
+      </div>
+      <form id="leadForm" novalidate>
+        <input name="nombre" placeholder="Tu nombre" autocomplete="name" required>
+        <input name="telefono" type="tel" placeholder="WhatsApp (ej. 11 2345 6789)" autocomplete="tel" required>
+        <select name="motivo" required>
+          <option value="">¿Qué necesitás?</option>
+          <option>Cumpleaños / fiesta infantil</option>
+          <option>Útiles escolares</option>
+          <option>Papelería para oficina / empresa</option>
+          <option>Egresos / eventos</option>
+          <option>Otro</option>
+        </select>
+        <textarea name="mensaje" rows="3" placeholder="Contanos un poco más (cantidad, fecha, temática…)"></textarea>
+        <button class="btn btn-yellow" type="submit">Quiero mi presupuesto</button>
+        <small>Al enviar se abre WhatsApp con tu consulta lista. No compartimos tus datos.</small>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p><strong>Papelera Sabri</strong> · Papelería y Cotillón</p>
+    <p style="margin-top:6px">📍 <span id="fAddr"></span> · 💬 <a id="fWa" href="#">WhatsApp</a> · 📸 <a id="fIg" href="#">Instagram</a></p>
+    <p style="margin-top:10px;opacity:.6">© <span id="yr"></span> Papelera Sabri. Todos los derechos reservados.</p>
+  </div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="#" aria-label="Escribinos por WhatsApp" target="_blank" rel="noopener">💬</a>
+
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="drawer" aria-label="Carrito">
+  <header><h3>🛒 Tu pedido</h3><button class="x" id="closeCart" aria-label="Cerrar">×</button></header>
+  <div class="items" id="items"></div>
+  <div class="checkout" id="checkout">
+    <div class="total"><span>Total</span><span id="total">$0</span></div>
+    <input id="cName" placeholder="Tu nombre" autocomplete="name">
+    <input id="cPhone" type="tel" placeholder="Tu WhatsApp" autocomplete="tel">
+    <select id="cDelivery">
+      <option value="Retiro por el local">Retiro por el local</option>
+      <option value="Envío a domicilio (a coordinar)">Envío a domicilio (a coordinar)</option>
+    </select>
+    <div class="pay" id="pay">
+      <label><input type="radio" name="pay" value="mp" checked><span><strong>Mercado Pago</strong><small>Tarjeta, débito o dinero en cuenta</small></span></label>
+      <label><input type="radio" name="pay" value="transfer"><span><strong>Transferencia bancaria</strong><small>Alias y comprobante por WhatsApp</small></span></label>
+      <label><input type="radio" name="pay" value="local"><span><strong>Pago en el local</strong><small>Efectivo al retirar</small></span></label>
+    </div>
+    <div class="transfer" id="transferBox"></div>
+    <button class="btn btn-pink" id="confirm">Confirmar pedido</button>
+    <button class="btn btn-ghost" id="clear" style="padding:10px">Vaciar carrito</button>
+  </div>
+</aside>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ CONFIGURACIÓN — editá solo esto ============ */
+const CONFIG = {
+  whatsapp: "5491100000000",          // WhatsApp con código de país, sin + ni espacios
+  instagram: "https://instagram.com/papelerasabri",
+  direccion: "Tu dirección, Ciudad",
+  aliasTransferencia: "PAPELERA.SABRI",   // alias CBU/CVU
+  titularTransferencia: "Sabrina Apellido",
+  /* Link de cobro de Mercado Pago (Mercado Pago > Cobrar > Link de pago).
+     Si lo dejás vacío, se coordina el pago por WhatsApp. */
+  mercadoPagoLink: "",
+  moneda: "es-AR"
+};
+
+/* ============ CATÁLOGO — reemplazá con tus productos reales ============ */
+const PRODUCTS = [
+  {id:1,  name:"Globos de colores x50",     cat:"Cotillón", price:3500, emoji:"🎈", bg:"#FFE3EE"},
+  {id:2,  name:"Piñata personalizada",      cat:"Cotillón", price:18000, emoji:"🪅", bg:"#FFF1C9"},
+  {id:3,  name:"Kit de vasos y platos x12", cat:"Cotillón", price:4800, emoji:"🥳", bg:"#E4F8F4"},
+  {id:4,  name:"Velas de cumpleaños",       cat:"Cotillón", price:1200, emoji:"🕯️", bg:"#EEE8FF"},
+  {id:5,  name:"Guirnalda Feliz Cumple",    cat:"Cotillón", price:2900, emoji:"🎊", bg:"#FFE3EE"},
+  {id:6,  name:"Cuaderno tapa dura A4",     cat:"Escolar",  price:3900, emoji:"📓", bg:"#E4F8F4"},
+  {id:7,  name:"Set de lápices de colores", cat:"Escolar",  price:4200, emoji:"✏️", bg:"#FFF1C9"},
+  {id:8,  name:"Mochila escolar",           cat:"Escolar",  price:24500, emoji:"🎒", bg:"#EEE8FF"},
+  {id:9,  name:"Resma A4 x500 hojas",       cat:"Oficina",  price:9800, emoji:"📄", bg:"#E4F8F4"},
+  {id:10, name:"Carpeta oficio 3 anillos",  cat:"Oficina",  price:3100, emoji:"🗂️", bg:"#FFF1C9"},
+  {id:11, name:"Marcadores x12",            cat:"Oficina",  price:5600, emoji:"🖍️", bg:"#FFE3EE"},
+  {id:12, name:"Papel de regalo (3 hojas)", cat:"Regalería",price:1500, emoji:"🎁", bg:"#EEE8FF"}
+];
+
+/* ============ LÓGICA ============ */
+const $ = s => document.querySelector(s);
+const fmt = n => new Intl.NumberFormat(CONFIG.moneda,{style:"currency",currency:"ARS",maximumFractionDigits:0}).format(n);
+const waLink = text => `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
+let cart = {};          // id -> qty
+let filter = "Todos";
+
+try { cart = JSON.parse(localStorage.getItem("sabri_cart")||"{}"); } catch(e){}
+const save = () => { try { localStorage.setItem("sabri_cart", JSON.stringify(cart)); } catch(e){} };
+
+function toast(msg){
+  const t=$("#toast"); t.textContent=msg; t.classList.add("show");
+  clearTimeout(toast._t); toast._t=setTimeout(()=>t.classList.remove("show"),1800);
+}
+
+/* catálogo */
+function renderFilters(){
+  const cats=["Todos",...new Set(PRODUCTS.map(p=>p.cat))];
+  $("#filters").innerHTML=cats.map(c=>`<button class="chip ${c===filter?"on":""}" data-c="${c}">${c}</button>`).join("");
+}
+function renderGrid(){
+  const list=PRODUCTS.filter(p=>filter==="Todos"||p.cat===filter);
+  $("#grid").innerHTML=list.map(p=>`
+    <article class="prod">
+      <div class="pic" style="background:${p.bg}" aria-hidden="true">${p.emoji}</div>
+      <div class="body">
+        <span class="cat">${p.cat}</span>
+        <h3>${p.name}</h3>
+        <div class="row"><span class="price">${fmt(p.price)}</span>
+        <button class="add" data-id="${p.id}">Agregar</button></div>
+      </div>
+    </article>`).join("");
+}
+$("#filters").addEventListener("click",e=>{
+  const c=e.target.closest(".chip"); if(!c) return;
+  filter=c.dataset.c; renderFilters(); renderGrid();
+});
+$("#grid").addEventListener("click",e=>{
+  const b=e.target.closest(".add"); if(!b) return;
+  const id=b.dataset.id; cart[id]=(cart[id]||0)+1; save(); renderCart();
+  toast("Agregado al carrito 🛒");
+});
+
+/* carrito */
+const entries = () => Object.entries(cart).map(([id,q])=>({p:PRODUCTS.find(x=>x.id==id),q})).filter(x=>x.p);
+const total = () => entries().reduce((s,{p,q})=>s+p.price*q,0);
+
+function renderCart(){
+  const list=entries();
+  $("#cartCount").textContent=list.reduce((s,x)=>s+x.q,0);
+  $("#total").textContent=fmt(total());
+  $("#checkout").style.display=list.length?"grid":"none";
+  $("#items").innerHTML=list.length?list.map(({p,q})=>`
+    <div class="item">
+      <div class="e">${p.emoji}</div>
+      <div><strong>${p.name}</strong><br><small>${fmt(p.price)} c/u</small></div>
+      <div class="qty"><button data-a="-" data-id="${p.id}" aria-label="Quitar uno">−</button><span>${q}</span><button data-a="+" data-id="${p.id}" aria-label="Agregar uno">+</button></div>
+    </div>`).join(""):`<p class="empty">Tu carrito está vacío 🎈<br>Sumá productos del catálogo.</p>`;
+}
+$("#items").addEventListener("click",e=>{
+  const b=e.target.closest("button[data-a]"); if(!b) return;
+  const id=b.dataset.id;
+  cart[id]=(cart[id]||0)+(b.dataset.a==="+"?1:-1);
+  if(cart[id]<=0) delete cart[id];
+  save(); renderCart();
+});
+$("#clear").onclick=()=>{cart={};save();renderCart();};
+
+const openCart=()=>{$("#drawer").classList.add("open");$("#overlay").classList.add("open");};
+const closeCart=()=>{$("#drawer").classList.remove("open");$("#overlay").classList.remove("open");};
+$("#openCart").onclick=openCart; $("#closeCart").onclick=closeCart; $("#overlay").onclick=closeCart;
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCart();});
+
+/* medio de pago */
+function payMethod(){return document.querySelector('input[name="pay"]:checked').value;}
+function updatePay(){
+  const box=$("#transferBox");
+  if(payMethod()==="transfer"){
+    box.style.display="block";
+    box.innerHTML=`Transferí <strong>${fmt(total())}</strong> a:<br>Alias: <strong>${CONFIG.aliasTransferencia}</strong><br>Titular: ${CONFIG.titularTransferencia}<br><small>Enviá el comprobante por WhatsApp al confirmar.</small>`;
+  } else box.style.display="none";
+}
+$("#pay").addEventListener("change",updatePay);
+$("#openCart").addEventListener("click",updatePay);
+$("#items").addEventListener("click",updatePay);
+
+/* confirmar pedido */
+$("#confirm").onclick=()=>{
+  const name=$("#cName").value.trim(), phone=$("#cPhone").value.trim();
+  if(!name||!phone){toast("Completá tu nombre y WhatsApp");return;}
+  const m=payMethod();
+  const metodo={mp:"Mercado Pago",transfer:"Transferencia bancaria",local:"Pago en el local"}[m];
+  const lines=entries().map(({p,q})=>`• ${q} x ${p.name} — ${fmt(p.price*q)}`).join("\n");
+  const msg=`¡Hola Papelera Sabri! Quiero hacer este pedido:\n\n${lines}\n\nTotal: ${fmt(total())}\nEntrega: ${$("#cDelivery").value}\nPago: ${metodo}\n\nNombre: ${name}\nTel: ${phone}`;
+  if(m==="mp" && CONFIG.mercadoPagoLink){
+    window.open(CONFIG.mercadoPagoLink,"_blank","noopener");
+    toast("Pagá en Mercado Pago y enviá tu pedido por WhatsApp");
+  }
+  window.open(waLink(msg),"_blank","noopener");
+};
+
+/* captación de leads */
+$("#leadForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const f=new FormData(e.target);
+  const n=(f.get("nombre")||"").trim(), t=(f.get("telefono")||"").trim(), mo=f.get("motivo");
+  if(!n||!t||!mo){toast("Completá nombre, WhatsApp y motivo");return;}
+  /* Para guardar los contactos: pegá acá la URL de Formspree / Google Apps Script / tu backend */
+  const LEADS_ENDPOINT="";
+  const data={nombre:n,telefono:t,motivo:mo,mensaje:f.get("mensaje")||"",fecha:new Date().toISOString()};
+  if(LEADS_ENDPOINT){
+    fetch(LEADS_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)}).catch(()=>{});
+  }
+  const msg=`¡Hola! Soy ${n}. Quiero un presupuesto para: ${mo}.\n${data.mensaje}\nMi WhatsApp: ${t}`;
+  window.open(waLink(msg),"_blank","noopener");
+  e.target.innerHTML=`<div class="ok">¡Gracias ${n}! Te respondemos en breve por WhatsApp 💜</div>`;
+});
+
+/* init */
+$("#yr").textContent=new Date().getFullYear();
+$("#fAddr").textContent=CONFIG.direccion;
+$("#fWa").href=waLink("¡Hola Papelera Sabri!");
+$("#waFloat").href=waLink("¡Hola Papelera Sabri! Quería consultar por un producto.");
+$("#fIg").href=CONFIG.instagram;
+renderFilters(); renderGrid(); renderCart(); updatePay();
+</script>
+</body>
+</html>
